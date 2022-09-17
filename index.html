@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.8.0/leaflet.css">
+  <title>Frontend Mentor | IP Address Tracker</title>
+
+
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <header>
+    <div class="text-cente">
+      <h2> IP Address Tracker</h2>
+    </div>
+    <div class="text-cente">
+      <input type="text" placeholder="  Search for any IP address or domain"><button onclick="find()"><img
+          src="./images/icon-arrow.svg" alt=""> </button>
+    </div>
+    <div>
+      <main>
+        <div>
+          <div> IP Address</div>
+          <div id="ipadddres"></div>
+        </div>
+        <div>
+          <div> Location</div>
+          <div id="loca"></div>
+        </div>
+        <div>
+          <div> Timezone</div>
+          <div id="Time"></div>
+        </div>
+        <div>
+          <div>ISP</div>
+          <div id="ISP"></div>
+        </div>
+      </main>
+    </div>
+  </header>
+  <footer>
+    <div id="map"></div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.8.0/leaflet.js"></script>
+  <script>
+
+    let ip = document.getElementById('ipadddres');
+    let loca = document.getElementById('loca');
+    let zone = document.getElementById('Time');
+    let isp = document.getElementById('ISP');
+    let inputip = document.querySelector('input');
+
+    var latlng = L.latLng(51.072, 72.88261);
+    var map = L.map('map').setView([51.505, -0.09], 13);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    function find() {
+
+      fetch(`https://geo.ipify.org/api/v2/country,city?apiKey=at_CzUDNCMNEeMQypBAHJMhR0A4Jq1T6&ipAddress=${inputip.value}`)
+        .then(response => response.json())
+        .then(response => {
+          console.log(response)
+          ip.innerHTML = response['ip'];
+
+          let location = response['location']['region'];
+          let city = response['location']['city'];
+          loca.innerHTML = location + ' ' + city;
+          zone.innerHTML = response['location']['timezone'];
+
+          isp.innerHTML = response['isp'];
+          console.log(response['location']['lat'])
+
+          var greenIcon = L.icon({
+            iconUrl: './images/icon-location.svg',
+          });
+          L.marker([response['location']['lat'], response['location']['lng']], { icon: greenIcon }).addTo(map)
+            .bindPopup('Your Location')
+            .openPopup();
+        }
+        )
+        .catch(err => console.error(err));
+
+    }
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>

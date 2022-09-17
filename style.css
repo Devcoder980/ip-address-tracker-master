@@ -1,0 +1,164 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;1,500;1,700&display=swap');
+
+body {
+    font-size: 18px;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.attribution {
+    font-size: 11px;
+    text-align: center;
+}
+
+.attribution a {
+    color: hsl(228, 45%, 44%);
+}
+
+#map {
+    height: 580px;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 8888888;
+    background-color: white;
+    top: 3rem;
+    width: fit-content;
+    border-radius: 8px;
+
+}
+
+main>div {
+    width: 195px;
+    height: 86px;
+    background: white;
+    border-right: 1px solid;
+    padding-left: 8px;
+    margin: 11px 3px;
+    color: #898686;
+    font-size: 15px;
+
+}
+
+header {
+
+    height: 16.5rem;
+    background-image: url('./images/pattern-bg.png');
+}
+
+header>div:nth-child(3) {
+    display: flex;
+    justify-content: center;
+}
+
+.text-cente {
+    text-align: center;
+}
+
+header>div:nth-child(1) {
+    color: white;
+    font-weight: 700;
+}
+
+header>div:nth-child(2)>input {
+    border-radius: 8px;
+    height: 2.5rem;
+    width: 25rem;
+    outline: none;
+    border: thin;
+    padding-left: 24px;
+    border-radius: 8px 0px 0px 8px;
+}
+
+header>div:nth-child(2) {
+    display: flex;
+    justify-content: center;
+    margin: 23px 0px;
+}
+
+button {
+    width: 2rem;
+    color: white;
+    border: thin;
+    background: hsl(0, 0%, 17%);
+    border-radius: 0px 8px 8px 0px;
+}
+
+h2 {
+    /* margin: 15px; */
+    padding: 20px;
+}
+
+#ipadddres {
+    font-size: 18px;
+    margin-top: 15px;
+    font-weight: 700;
+    color: hsl(0, 0%, 17%);
+}
+
+#ISP {
+    font-size: 18px;
+    margin-top: 15px;
+    font-weight: 700;
+    color: hsl(0, 0%, 17%);
+}
+
+#Time {
+    font-size: 18px;
+    margin-top: 15px;
+    font-weight: 700;
+    color: hsl(0, 0%, 17%);
+}
+
+#loca {
+    font-size: 18px;
+    margin-top: 15px;
+    font-weight: 700;
+    color: hsl(0, 0%, 17%);
+}
+
+@media screen and (max-width: 470px) {
+    #map {
+      
+        height: 46rem;
+        margin-top: 11rem;
+
+    }
+
+    /* main>div {
+        width: 302px;
+        height: 44px;
+    } */
+}
+
+@media screen and (max-width: 400px) {
+    main>div {
+        border: none;
+        width: 273px;
+        height: 54px;
+    }
+
+    #map {
+        height: 40rem;
+        
+        margin-top: 13rem;
+    }
+
+    header>div:nth-child(2) {
+        margin: 0 7px;
+    }
+}
+@media screen and (man-width: 400px){
+    #map{
+        margin-top: 0;
+    }
+}
